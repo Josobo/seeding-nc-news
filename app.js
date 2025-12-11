@@ -36,8 +36,4 @@ app.use(handleInvalidInput);
 
 module.exports = app;
 
-/*app.get("/api/topics", (request, response) => {//receives request
-  return db.query(`SELECT * FROM topics`).then(({ rows }) => {//model invoked
-    response.status(200).send({ topics: rows });// data manipulation
-  }); //sends response to controller 
-});*/
+
