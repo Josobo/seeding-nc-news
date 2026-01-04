@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
-const db = require("./db/connection");
 const getTopics = require("./controllers/topics.controllers");
 const getUsers = require("./controllers/users.controllers");
 const {
   getArticles,
   getArticleById,
+  patchArticleById,
 } = require("./controllers/articles.controllers");
 const {
   handlePathNotFound,
@@ -13,10 +13,16 @@ const {
   handleCustomErrors,
   handleInvalidInput,
 } = require("./errors");
+const {
+  getCommentsByArticleId,
+  postCommentsByArticleId,
+  deleteComment,
+} = require("./controllers/comments.controllers");
 
 // middleware functions
 
 app.use(express.json());
+app.use("/api", express.static("public"));
 
 app.get("/api/topics", getTopics);
 
@@ -26,18 +32,19 @@ app.get("/api/articles", getArticles);
 
 app.get("/api/articles/:article_id", getArticleById);
 
+app.get("/api/articles/:article_id/comments", getCommentsByArticleId);
+
+app.post("/api/articles/:article_id/comments", postCommentsByArticleId);
+
+app.patch("/api/articles/:article_id", patchArticleById);
+
+app.delete("/api/comments/:comment_id", deleteComment);
+
 app.use(handlePathNotFound);
 
 // Error handling middleware functions
-
+app.use(handleInvalidInput);
 app.use(handleCustomErrors);
 app.use(handleServerErrors);
-app.use(handleInvalidInput);
 
 module.exports = app;
-
-/*app.get("/api/topics", (request, response) => {//receives request
-  return db.query(`SELECT * FROM topics`).then(({ rows }) => {//model invoked
-    response.status(200).send({ topics: rows });// data manipulation
-  }); //sends response to controller 
-});*/

@@ -6,7 +6,6 @@ function handlePathNotFound(req, res) {
 }
 
 function handleCustomErrors(err, req, res, next) {
-  console.log(err);
   if (err.status) {
     res.status(err.status).send({ msg: err.msg });
   } else {
@@ -16,7 +15,6 @@ function handleCustomErrors(err, req, res, next) {
 
 //Handle server errors
 function handleServerErrors(err, req, res, next) {
-  console.log(err);
   res.status(500).send({ msg: "Server Error!" });
 }
 
