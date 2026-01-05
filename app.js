@@ -18,10 +18,13 @@ const {
   postCommentsByArticleId,
   deleteComment,
 } = require("./controllers/comments.controllers");
+const cors = require("cors");
 
 // middleware functions
+app.use(cors());
 
 app.use(express.json());
+
 app.use("/api", express.static("public/index.html"));
 
 app.get("/api/topics", getTopics);
