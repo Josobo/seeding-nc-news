@@ -8,7 +8,6 @@
 - [Project Structure](#-project-structure)
 - [Getting Started](#-getting-started)
 - [Usage](#-usage)
-- [Contributing](#-contributing)
 
 ---
 
@@ -16,7 +15,7 @@
 
 A backend project for a Reddit-style news platform built with Node.js, Express, and PostgreSQL. This project provides a fully relational database, seeded development/test data, and a RESTful API for accessing articles, comments, topics, and users.
 
-The application supports sorting, filtering, voting, commenting, and robust error handling, making it suitable for frontend integration and backend portfolio projects.
+The application supports sorting, filtering, voting, commenting, and robust error handling.
 
 ### Architecture Overview
 
@@ -165,8 +164,9 @@ PGDATABASE=test_database_name
 
 in the `.env.development` file
 
-````
+```
 PGDATABASE=development_database_name
+```
 
 ---
 
@@ -175,64 +175,48 @@ PGDATABASE=development_database_name
 Once the server is running, you can interact with the API to manage documentation data. Below are the primary user-facing endpoints.
 
 ### Documentation Topics
+
 Retrieve categories for documentation organization.
+
 - **Endpoint:** `GET /api/topics`
 - **Action:** Fetches an array of all documentation categories (e.g., "coding", "testing", "deployment").
 
 ### User Profiles
+
 Manage and view documentation contributors.
+
 - **Endpoint:** `GET /api/users`
 - **Action:** Fetches a list of all registered users who can contribute to documentation.
 
 ### Documentation Articles
+
 The core content of your repository's documentation.
+
 - **Endpoint:** `GET /api/articles`
 - **Action:** Fetches a list of all documentation articles/README modules.
 - **Endpoint:** `GET /api/articles/:article_id`
 - **Action:** Retrieves a specific piece of documentation by its unique ID.
 
 ### Interactive Feedback
+
 View feedback and comments on specific documentation modules.
+
 - **Endpoint:** `GET /api/articles/:article_id/comments`
 - **Action:** Fetches all user feedback related to a specific documentation article.
 
 ### Running Tests
+
 To ensure the documentation engine is functioning correctly:
+
 ```bash
 # Run all tests
 npm test
 
 # Run only the seeding tests
 npm run test-seed
-````
+```
 
 ---
-
-## 🤝 Contributing
-
-We welcome contributions to improve the NC_NEWS Frontend Project! Whether you are fixing a bug, adding new documentation categories, or optimizing the API performance, your help is appreciated.
-
-### How to Contribute
-
-1. **Fork the repository** - Click the 'Fork' button at the top right of this page.
-2. **Create a feature branch**
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-3. **Make your changes** - Improve code, documentation, or features.
-4. **Test thoroughly** - Ensure all functionality works as expected.
-   ```bash
-   npm test
-   ```
-5. **Commit your changes** - Write clear, descriptive commit messages.
-   ```bash
-   git commit -m 'Add: Amazing new feature that improves documentation categorization'
-   ```
-6. **Push to your branch**
-   ```bash
-   git push origin feature/amazing-feature
-   ```
-7. **Open a Pull Request** - Submit your changes for review.
 
 ### Development Guidelines
 
